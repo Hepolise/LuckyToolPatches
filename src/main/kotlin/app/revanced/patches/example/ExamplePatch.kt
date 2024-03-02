@@ -9,7 +9,7 @@ import app.revanced.patcher.patch.annotation.Patch
     name = "Example Patch",
     description = "This is an example patch to start with.",
     compatiblePackages = [
-        CompatiblePackage("com.example.app", ["1.0.0"]),
+        CompatiblePackage("com.luckyzyx.luckytool", ["1.2.1"]),
     ],
 )
 @Suppress("unused")
