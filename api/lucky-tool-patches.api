@@ -1,0 +1,6 @@
+public final class ru/hepolise/LuckyToolPatches/ExamplePatch : app/revanced/patcher/patch/BytecodePatch {
+	public static final field INSTANCE Lru/hepolise/LuckyToolPatches/ExamplePatch;
+	public fun execute (Lapp/revanced/patcher/data/BytecodeContext;)V
+	public synthetic fun execute (Lapp/revanced/patcher/data/Context;)V
+}
+
