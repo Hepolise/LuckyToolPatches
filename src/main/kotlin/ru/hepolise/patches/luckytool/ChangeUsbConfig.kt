@@ -14,7 +14,7 @@ import ru.hepolise.patches.luckytool.fingerprints.ChangeUsbConfigFingerprint
 
 @Patch(
     name = "Change Usb Config patch",
-    description = "This is patch forces LuckyTool to start a USB tethering mode.",
+    description = "This patch forces LuckyTool to start a USB tethering mode.",
     compatiblePackages = [
         CompatiblePackage("com.luckyzyx.luckytool"),
     ],
