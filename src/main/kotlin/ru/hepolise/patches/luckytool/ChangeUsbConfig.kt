@@ -1,4 +1,4 @@
-package ru.hepolise.LuckyToolPatches
+package ru.hepolise.patches.luckytool
 
 import app.revanced.patcher.data.BytecodeContext
 import app.revanced.patcher.extensions.InstructionExtensions.getInstructions
@@ -10,7 +10,7 @@ import app.revanced.patcher.patch.annotation.Patch
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
-import ru.hepolise.LuckyToolPatches.fingerprints.ChangeUsbConfigFingerprint
+import ru.hepolise.patches.luckytool.fingerprints.ChangeUsbConfigFingerprint
 
 @Patch(
     name = "Change Usb Config patch",
