@@ -1,1 +1,1 @@
-[{"name":"Change Usb Config patch","description":"This patch forces LuckyTool to start a USB tethering mode.","compatiblePackages":[{"name":"com.luckyzyx.luckytool"}],"use":true,"requiresIntegrations":false,"options":[]}]
+[{"name":"Change Usb Config patch","description":"This patch forces LuckyTool to start a USB tethering mode.","compatiblePackages":[{"name":"com.luckyzyx.luckytool","versions":null}],"use":true,"requiresIntegrations":false,"options":[]}]
