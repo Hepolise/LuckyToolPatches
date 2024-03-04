@@ -21,11 +21,11 @@ jobs:
         uses: burrunan/gradle-cache-action@v1
 
       - name: Build
-        run: ./gradlew buildDexJar clean
+        run: ./gradlew build
       - name: ls
         run: ls -l
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: Build Artifacts
-          path: build
+          path: build/libs
