@@ -21,6 +21,8 @@ jobs:
 
       - name: Build
         run: ./gradlew build clean
+      - name: ls
+        run: ls -l
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
