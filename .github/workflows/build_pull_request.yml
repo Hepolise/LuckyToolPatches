@@ -17,11 +17,14 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v1
 
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew buildDexJar
       - name: ls
         run: ls -l
       - name: Upload
