@@ -37,7 +37,7 @@ object ChangeUsbConfig : BytecodePatch(
         Opcode.FILLED_NEW_ARRAY,
     )
 
-    private val PATCHABLE_STRING_BLOCS_START = listOf(
+    private val PATCHABLE_BLOCK_START_CODES = listOf(
         "onUsbSelect",
         "updateUsbNotification",
         "changeUsbConfig"
@@ -49,20 +49,20 @@ object ChangeUsbConfig : BytecodePatch(
             println("found method: " + this.method.name)
             var lastIndex = 0
             var reference = ""
+            var patchedBlocks = 0
             for (instruction in mutableMethod.getInstructions()) {
                 if (OPCODES[lastIndex] == instruction.opcode) {
                     lastIndex++
                     if (instruction.opcode === Opcode.CONST_STRING) {
                         val stringInstruction = instruction as BuilderInstruction21c
                         reference = stringInstruction.reference.toString()
-                        if (!PATCHABLE_STRING_BLOCS_START.contains(reference)) {
+                        if (!PATCHABLE_BLOCK_START_CODES.contains(reference)) {
                             lastIndex = 0
                         }
                     }
                 } else {
                     lastIndex = 0
                 }
-//                println("lastIndex: $lastIndex")
                 if (lastIndex == OPCODES.size) {
                     println("found instruction of $reference at " + instruction.location.index)
                     val filledNewArrayInstr = instruction as BuilderInstruction35c
@@ -81,13 +81,14 @@ object ChangeUsbConfig : BytecodePatch(
                     )
                     mutableMethod.replaceInstructions(instruction.location.index, lastSmaliInstr)
                     lastIndex = 0
+                    patchedBlocks++
                 }
-//                if (lastIndex > 0) {
-//                    println("instruction: ${instruction.opcode}")
-//                    println("location: ${instruction.location.index}")
-//                }
             }
-//            mutableMethod.addInstructions()
+            if (patchedBlocks != PATCHABLE_BLOCK_START_CODES.size) {
+                throw PatchException(
+                    "Failed to patch blocks ($patchedBlocks/${PATCHABLE_BLOCK_START_CODES.size} blocks patched)"
+                )
+            }
 
         } ?: throw PatchException("Failed to resolve ${this.javaClass.simpleName}")
     }
