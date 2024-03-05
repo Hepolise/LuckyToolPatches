@@ -1,6 +1,7 @@
 package ru.hepolise.patches.luckytool
 
 import app.revanced.patcher.data.BytecodeContext
+import app.revanced.patcher.extensions.InstructionExtensions.addInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.getInstructions
 import app.revanced.patcher.extensions.InstructionExtensions.replaceInstructions
 import app.revanced.patcher.patch.BytecodePatch
@@ -70,15 +71,15 @@ object ChangeUsbConfig : BytecodePatch(
                     } else {
                         "filled-new-array {v${filledNewArrayInstr.registerC}, v9}, [Ljava/lang/Object;"
                     }
-                    mutableMethod.replaceInstructions(
+                    mutableMethod.addInstructions(
                         instruction.location.index,
                         """
                         const/4 v9, 0x3
                         invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
                         move-result-object v9
-                        $lastSmaliInstr
                         """
                     )
+                    mutableMethod.replaceInstructions(instruction.location.index, lastSmaliInstr)
                     lastIndex = 0
                 }
 //                if (lastIndex > 0) {
