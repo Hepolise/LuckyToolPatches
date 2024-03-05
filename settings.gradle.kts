@@ -1,4 +1,4 @@
-rootProject.name = "lucky-tool-patches"
+rootProject.name = "revanced-patches"
 
 buildCache {
     local {
