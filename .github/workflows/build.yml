@@ -37,3 +37,12 @@ jobs:
         with:
           name: Build Artifacts
           path: build/libs
+
+      - name: Publish release
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          files: |
+            *.jar
+          automatic_release_tag: "latest"
+          prerelease: false
