@@ -30,9 +30,11 @@ object ChangeUsbConfig : BytecodePatch(
         Opcode.IPUT_OBJECT,
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
-        Opcode.INVOKE_VIRTUAL_RANGE,
+        Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.INVOKE_VIRTUAL,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.INVOKE_STATIC,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.FILLED_NEW_ARRAY,
     )
